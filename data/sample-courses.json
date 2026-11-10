@@ -1,0 +1,35 @@
+
+[
+  {
+    "id": 101,
+    "title": "Aviation Safety Fundamentals",
+    "category": "Safety",
+    "level": "Beginner",
+    "durationHours": 4,
+    "description": "Learn about safety awareness, risk management, and basic aviation safety procedures."
+  },
+  {
+    "id": 102,
+    "title": "Airport Ground Operations",
+    "category": "Operations",
+    "level": "Beginner",
+    "durationHours": 6,
+    "description": "Explore ground handling, airport coordination, and operational workflows."
+  },
+  {
+    "id": 103,
+    "title": "Flight Planning Essentials",
+    "category": "Flight Training",
+    "level": "Intermediate",
+    "durationHours": 5,
+    "description": "Review flight planning concepts, navigation, and preparation procedures."
+  },
+  {
+    "id": 104,
+    "title": "Aviation Customer Experience",
+    "category": "Customer Service",
+    "level": "Beginner",
+    "durationHours": 3,
+    "description": "Explore passenger communication, service recovery, and customer support in aviation."
+  }
+]
