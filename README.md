@@ -32,7 +32,7 @@ For this demonstration, the category filter assigns categories based on course t
 
 ## Project Screenshots
 
-Screenshots are available in the [Training Portal folder](training%20protal/).
+Screenshots are available in the [Training Portal folder](TrainingPortal/).
 
 They demonstrate the course directory, search functionality, category filtering, individual course pages, and WordPress REST API response.
 
