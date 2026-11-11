@@ -1,0 +1,72 @@
+
+/* Aviation Training Portal styles */
+
+.atp-portal {
+    font-family: Arial, sans-serif;
+    color: #172b4d;
+}
+
+.atp-portal .portal-header {
+    background-color: #12345b;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.atp-portal .portal-header h1 {
+    color: white;
+}
+
+.atp-portal .portal-content {
+    background-color: #f4f7fb;
+    padding: 30px 20px;
+}
+
+.atp-portal input,
+.atp-portal select {
+    padding: 12px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.atp-portal .courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.atp-portal .course {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #dddddd;
+}
+
+.atp-portal .course h3 {
+    color: #12345b;
+}
+
+.atp-portal .course a {
+    color: #1262a3;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .atp-portal input,
+    .atp-portal select {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+
+/* Fix the category dropdown */
+.atp-portal select {
+    height: 48px;
+    padding: 10px 15px;
+    line-height: normal;
+    box-sizing: border-box;
+}
