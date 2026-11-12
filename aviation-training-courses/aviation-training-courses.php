@@ -10,7 +10,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Course registration
 
 function atp_register_courses() {
     register_post_type('training_course', array(
@@ -47,8 +46,6 @@ function atp_register_courses() {
 }
 add_action('init', 'atp_register_courses');
 
-
-// Course fields
 
 function atp_course_fields($post) {
     wp_nonce_field('atp_save_course', 'atp_course_nonce');
@@ -121,7 +118,6 @@ function atp_save_course($post_id) {
 add_action('save_post_training_course', 'atp_save_course');
 
 
-// REST API
 
 function atp_register_api_details() {
     register_rest_field('training_course', 'course_details', array(
@@ -149,7 +145,6 @@ function atp_register_api_details() {
 add_action('rest_api_init', 'atp_register_api_details');
 
 
-// React catalog
 
 function atp_portal_shortcode() {
     $url = plugin_dir_url(__FILE__);
