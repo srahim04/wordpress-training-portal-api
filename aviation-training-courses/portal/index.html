@@ -4,10 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Aviation Training Portal</title>
 
-    <!-- React libraries -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -67,7 +65,6 @@
 </head>
 
 <body>
-
     <header>
         <h1>Aviation Training Portal</h1>
         <p>Explore aviation training courses</p>
@@ -78,18 +75,13 @@
     </main>
 
     <script type="text/babel">
-
         function App() {
-
-            // Store courses and search information
             const [courses, setCourses] = React.useState([]);
             const [search, setSearch] = React.useState("");
             const [category, setCategory] = React.useState("All");
             const [error, setError] = React.useState("");
 
-            // Get courses from WordPress
             React.useEffect(() => {
-
                 fetch("/wp-json/wp/v2/training-courses")
                     .then(response => {
                         if (!response.ok) {
@@ -99,10 +91,8 @@
                     })
                     .then(data => setCourses(data))
                     .catch(() => setError("Unable to load courses."));
-
             }, []);
 
-            // Choose a category based on the course title
             function getCategory(title) {
                 if (title.includes("Pilot")) return "Pilot Training";
                 if (title.includes("Airport")) return "Airport Operations";
@@ -111,13 +101,10 @@
                 return "Other";
             }
 
-            // Filter courses by search and category
             const filteredCourses = courses.filter(course => {
-
                 const title = course.title.rendered;
                 const matchesSearch = title.toLowerCase()
                     .includes(search.toLowerCase());
-
                 const matchesCategory = category === "All" ||
                     getCategory(title) === category;
 
@@ -126,7 +113,6 @@
 
             return (
                 <div>
-
                     <h2>Available Courses</h2>
 
                     <input
@@ -154,26 +140,18 @@
                     {!error && <p>{filteredCourses.length} courses found</p>}
 
                     <div className="courses">
-
                         {filteredCourses.map(course => (
-
                             <div className="course" key={course.id}>
-
-                                <h3>{course.title.rendered
-                                    .replace("&amp;", "&")}</h3>
+                                <h3>
+                                    {course.title.rendered.replace("&amp;", "&")}
+                                </h3>
 
                                 <p>{getCategory(course.title.rendered)}</p>
 
-                                <a href={course.link}>
-                                    View Course
-                                </a>
-
+                                <a href={course.link}>View Course</a>
                             </div>
-
                         ))}
-
                     </div>
-
                 </div>
             );
         }
@@ -181,8 +159,6 @@
         ReactDOM.createRoot(
             document.getElementById("root")
         ).render(<App />);
-
     </script>
-
 </body>
 </html>
