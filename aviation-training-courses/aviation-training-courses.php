@@ -181,9 +181,6 @@ function atp_portal_shortcode() {
 }
 add_shortcode('aviation_portal', 'atp_portal_shortcode');
 
-
-// Individual course pages
-
 function atp_display_featured_image($content) {
     if (
         !is_singular('training_course') ||
@@ -263,8 +260,6 @@ function atp_course_navigation($content) {
 }
 add_filter('the_content', 'atp_course_navigation', 20);
 
-
-// Course page styles
 
 function atp_single_course_styles() {
     if (!is_singular('training_course')) {
