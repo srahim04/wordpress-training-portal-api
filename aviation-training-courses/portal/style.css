@@ -1,72 +1,845 @@
 
-/* Aviation Training Portal styles */
+/* WordPress layout */
 
-.atp-portal {
-    font-family: Arial, sans-serif;
-    color: #172b4d;
+body:has(#atp-portal) {
+    margin: 0;
+    --atp-header-height: 80px;
+    --atp-admin-height: 0px;
+    --atp-sidebar-width: 240px;
+    --atp-sidebar-color: #153b55;
 }
 
-.atp-portal .portal-header {
-    background-color: #12345b;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
+body.admin-bar:has(#atp-portal) {
+    --atp-admin-height: 32px;
 }
 
-.atp-portal .portal-header h1 {
-    color: white;
+body:has(#atp-portal) .ast-container,
+body:has(#atp-portal) .site-content .ast-container,
+body:has(#atp-portal) .site-content,
+body:has(#atp-portal) .content-area,
+body:has(#atp-portal) .site-main,
+body:has(#atp-portal) .entry-content,
+body:has(#atp-portal) .ast-article-single {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
-.atp-portal .portal-content {
-    background-color: #f4f7fb;
-    padding: 30px 20px;
+body:has(#atp-portal) .entry-header,
+body:has(#atp-portal) .entry-title,
+body:has(#atp-portal) #colophon,
+body:has(#atp-portal) .site-footer,
+body:has(#atp-portal) .ast-footer-overlay {
+    display: none !important;
 }
 
-.atp-portal input,
-.atp-portal select {
-    padding: 12px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+body:has(#atp-portal) .site-content {
+    background: #f5f7fa;
+}
+
+body:has(#atp-portal) #atp-portal {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+body:has(#atp-portal) #masthead {
+    position: sticky;
+    top: var(--atp-admin-height);
+    z-index: 1000;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(15, 40, 60, 0.08);
+}
+
+/* Base styles */
+
+#atp-portal {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1b3045;
+}
+
+#atp-portal * {
+    box-sizing: border-box;
+}
+
+#atp-portal a {
+    text-decoration: none;
+}
+
+#atp-portal button,
+#atp-portal input,
+#atp-portal select {
+    font: inherit;
+}
+
+#atp-portal button {
+    cursor: pointer;
+}
+
+/* Dashboard */
+
+#atp-portal .atp-layout {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    margin: 0;
+    background: linear-gradient(
+        to right,
+        #153b55 0,
+        #153b55 240px,
+        #f5f7fa 240px,
+        #f5f7fa 100%
+    );
+}
+
+#atp-portal .atp-main {
+    width: calc(100% - 240px);
+    min-width: 0;
+    min-height: 0;
+    margin-left: 240px;
+    padding: 0 26px;
+    transform: translateY(-45px);
+}
+
+/* Sidebar */
+
+#atp-portal .atp-sidebar {
+    position: fixed;
+    top: calc(var(--atp-header-height) + var(--atp-admin-height));
+    bottom: 0;
+    left: 0;
+    z-index: 900;
+    width: var(--atp-sidebar-width);
+    height: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+    padding: 14px 15px 16px;
+    background: var(--atp-sidebar-color);
+    color: #ffffff;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    overflow-y: auto;
+}
+
+#atp-portal .atp-logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 9px;
+    width: 100%;
+    flex-shrink: 0;
+    margin: 0 0 8px;
+    padding: 5px 0 17px;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    color: #ffffff;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+#atp-portal .atp-logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    padding: 0;
+    font-size: 20px;
+    color: #ffffff;
+    background: #2b7197;
+    border-radius: 11px;
+}
+
+#atp-portal .atp-side-label {
+    margin: 3px 0 5px;
+    padding-left: 10px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    color: #9fc2d7;
+}
+
+#atp-portal .atp-side-link {
+    display: flex;
+    align-items: center;
+    min-height: 43px;
+    padding: 10px 12px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #dceaf3;
+    border-radius: 9px;
+    border-left: 3px solid transparent;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#atp-portal .atp-side-link:hover,
+#atp-portal .atp-side-link:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+    border-left-color: #e8b562;
+    color: #ffffff;
+}
+
+#atp-portal .atp-side-link[href="#atp-catalog"] {
+    background: rgba(255, 255, 255, 0.09);
+    border-left-color: #e8b562;
+    color: #ffffff;
+}
+
+#atp-portal .atp-side-note {
+    margin-top: auto;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    padding: 17px 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 11px;
+}
+
+#atp-portal .atp-side-note strong {
+    display: block;
+    color: #f0c47a;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+#atp-portal .atp-side-note p {
+    margin: 9px 0 0;
+    color: #d2e2ec;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Top bar */
+
+#atp-portal .atp-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0 10px;
+    font-size: 17px;
+    color: #687b8d;
+}
+
+#atp-portal .atp-demo-label {
+    padding: 7px 12px;
+    background: #ffffff;
+    border: 1px solid #dce4ec;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+/* Hero */
+
+#atp-portal .atp-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    width: 100%;
+    min-height: 350px;
+    background: #17425c;
+    color: #ffffff;
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+#atp-portal .atp-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: 0;
+    padding: 35px 25px;
+}
+
+#atp-portal .atp-overline {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    color: #3680a6;
+}
+
+#atp-portal .atp-hero .atp-overline {
+    color: #a5d9ec;
+}
+
+#atp-portal .atp-hero h1 {
+    margin: 13px 0;
+    color: #ffffff;
+    font-size: clamp(34px, 3vw, 46px);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+#atp-portal .atp-hero p {
+    margin: 0 0 23px;
+    color: #d7e7f0;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+#atp-portal .atp-hero-button {
+    display: inline-block;
+    padding: 12px 17px;
+    background: #e8b562;
+    color: #142c3d;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+#atp-portal .atp-hero-button:hover {
+    background: #f2c77d;
+}
+
+/* Slideshow */
+
+#atp-portal .atp-slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    overflow: hidden;
+    background: #173e58;
+}
+
+#atp-portal .atp-slide {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+#atp-portal .atp-slide-active {
+    opacity: 1;
+}
+
+#atp-portal .atp-slide-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+}
+
+#atp-portal .atp-slide-dot {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    min-height: 10px;
+    padding: 0;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+#atp-portal .atp-dot-active {
+    background: #ffffff;
+}
+
+/* Statistics */
+
+#atp-portal .atp-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin: 18px 0 35px;
+}
+
+#atp-portal .atp-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 19px;
+    background: #ffffff;
+    border: 1px solid #e1e8ef;
+    border-radius: 10px;
+}
+
+#atp-portal .atp-stat > span {
+    color: #657b8e;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}
+
+#atp-portal .atp-stat strong {
+    color: #193b54;
+    font-size: 34px;
+    line-height: 1.3;
+}
+
+#atp-portal .atp-stat small {
+    color: #738496;
     font-size: 16px;
 }
 
-.atp-portal .courses {
+/* Course catalog */
+
+#atp-portal .atp-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+#atp-portal .atp-section-header h2 {
+    margin: 7px 0;
+    color: #1b3045;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+#atp-portal .atp-section-header p {
+    margin: 0;
+    color: #718294;
+    font-size: 18px;
+}
+
+#atp-portal .atp-result-count {
+    padding: 8px 12px;
+    background: #e0edf5;
+    color: #265f80;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+#atp-portal .atp-filters {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    margin-top: 25px;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    align-items: end;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background: #ffffff;
+    border: 1px solid #e1e8ef;
+    border-radius: 10px;
 }
 
-.atp-portal .course {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px #dddddd;
+#atp-portal .atp-filters label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+    font-size: 17px;
+    font-weight: 700;
 }
 
-.atp-portal .course h3 {
-    color: #12345b;
+#atp-portal .atp-filters input,
+#atp-portal .atp-filters select {
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid #d2dfe8;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1b3045;
+    font-size: 17px;
 }
 
-.atp-portal .course a {
+#atp-portal .atp-clear {
+    padding: 11px;
+    background: transparent;
+    border: 0;
     color: #1262a3;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 700;
 }
 
-@media (max-width: 600px) {
-    .atp-portal input,
-    .atp-portal select {
-        width: 100%;
-        margin: 5px 0;
+#atp-portal .atp-clear:hover {
+    text-decoration: underline;
+}
+
+/* Course cards */
+
+#atp-portal .atp-course-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+#atp-portal .atp-course-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: #ffffff;
+    border: 1px solid #e1e8ef;
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+#atp-portal .atp-course-card > img {
+    display: block;
+    width: 100%;
+    height: 165px;
+    object-fit: cover;
+}
+
+#atp-portal .atp-course-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: 16px;
+}
+
+#atp-portal .atp-category {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 5px 9px;
+    background: #e5f0f6;
+    color: #246180;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#atp-portal .atp-course-body h3 {
+    margin: 13px 0 9px;
+    color: #19344b;
+    font-size: 23px;
+    line-height: 1.3;
+}
+
+#atp-portal .atp-course-description {
+    flex: 1;
+    color: #64788a;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+#atp-portal .atp-course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0;
+    color: #637f91;
+    font-size: 16px;
+}
+
+#atp-portal .atp-details-button {
+    padding: 13px 0 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid #e7edf2;
+    text-align: left;
+    color: #1262a3;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+#atp-portal .atp-details-button:hover {
+    text-decoration: underline;
+}
+
+#atp-portal .atp-message {
+    padding: 35px 20px;
+    background: #ffffff;
+    border: 1px solid #e1e8ef;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#atp-portal .atp-message button {
+    padding: 10px 16px;
+    background: #17425c;
+    color: #ffffff;
+    border: 0;
+    border-radius: 6px;
+}
+
+/* About */
+
+#atp-portal .atp-about {
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    margin: 45px 0 0;
+    padding: 35px 40px 0;
+    border-top: 1px solid #dce5ed;
+    background: #f5f7fa;
+    text-align: center;
+}
+
+#atp-portal .atp-about .atp-overline {
+    display: block;
+    margin-bottom: 12px;
+    color: #3680a6;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+#atp-portal .atp-about h2 {
+    margin: 0 0 25px;
+    color: #1b3045;
+    font-size: 40px;
+    font-weight: 800;
+    text-align: center;
+}
+
+#atp-portal .atp-about p {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    color: #536b7d;
+    font-size: 20px;
+    line-height: 1.85;
+    text-align: center;
+}
+
+#atp-portal .atp-about p:last-child {
+    margin-bottom: 0;
+}
+
+/* Course details */
+
+#atp-portal .atp-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(12, 27, 42, 0.7);
+}
+
+#atp-portal .atp-modal {
+    position: relative;
+    width: min(650px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+#atp-portal .atp-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 24px;
+}
+
+#atp-portal .atp-detail-image {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+#atp-portal .atp-modal-body {
+    padding: 25px;
+}
+
+#atp-portal .atp-modal-body h2 {
+    color: #1b3045;
+    font-size: 34px;
+}
+
+#atp-portal .atp-detail-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px;
+    background: #f1f5f8;
+    border-radius: 8px;
+    font-size: 17px;
+}
+
+#atp-portal .atp-modal-body > p {
+    color: #64788a;
+    font-size: 19px;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+/* Accessibility */
+
+#atp-portal :is(a, button, input, select):focus-visible {
+    outline: 3px solid #dca346;
+    outline-offset: 3px;
+}
+
+#atp-portal #atp-catalog,
+#atp-portal #atp-about {
+    scroll-margin-top: 120px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 1250px) {
+    #atp-portal .atp-course-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
+@media (max-width: 950px) {
+    #atp-portal .atp-main {
+        padding: 0 20px;
+    }
 
-/* Fix the category dropdown */
-.atp-portal select {
-    height: 48px;
-    padding: 10px 15px;
-    line-height: normal;
-    box-sizing: border-box;
+    #atp-portal .atp-course-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #atp-portal .atp-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    #atp-portal .atp-layout {
+        display: block;
+        background: #f5f7fa;
+    }
+
+    #atp-portal .atp-sidebar {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 20px;
+    }
+
+    #atp-portal .atp-main {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 20px;
+    }
+
+    #atp-portal .atp-logo {
+        justify-content: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 16px;
+    }
+
+    #atp-portal .atp-side-note {
+        margin-top: 15px;
+    }
+
+    #atp-portal .atp-hero {
+        grid-template-columns: 1fr;
+    }
+
+    #atp-portal .atp-hero-content {
+        padding: 28px 24px;
+    }
+
+    #atp-portal .atp-slideshow {
+        height: 260px;
+        min-height: 260px;
+    }
+
+    #atp-portal .atp-about {
+        padding: 35px 20px 45px;
+    }
+
+    #atp-portal .atp-about h2 {
+        font-size: 30px;
+    }
+
+    #atp-portal .atp-about p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    #atp-portal .atp-main {
+        padding: 0 14px;
+    }
+
+    #atp-portal .atp-stats,
+    #atp-portal .atp-course-grid,
+    #atp-portal .atp-filters {
+        grid-template-columns: 1fr;
+    }
+
+    #atp-portal .atp-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #atp-portal .atp-demo-label {
+        display: none;
+    }
+}
+
+@media (max-width: 782px) {
+    body.admin-bar:has(#atp-portal) {
+        --atp-admin-height: 46px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #atp-portal .atp-slide {
+        transition: none;
+    }
+}
+
+/* Individual course pages */
+
+body.single-training_course .entry-title {
+    font-size: 42px !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
+}
+
+body.single-training_course .entry-meta,
+body.single-training_course .entry-meta a {
+    font-size: 17px !important;
+}
+
+body.single-training_course .entry-content p {
+    font-size: 21px !important;
+    line-height: 1.85 !important;
+}
+
+body.single-training_course .atp-course-navigation,
+body.single-training_course .atp-course-navigation a {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+}
+
+body.single-training_course .entry-content {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
