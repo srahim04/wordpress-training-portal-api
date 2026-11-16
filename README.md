@@ -40,7 +40,7 @@ I developed and tested the project locally using LocalWP.
 
 For the category filter, I used WordPress training categories when they're available. If a course doesn't have one assigned, the dashboard uses its title to determine the training area.
 
-Project Screenshots
+##Project Screenshots
 I included screenshots in the Project-Demo folder to show how the website looks and works.
 
 The screenshots cover the main dashboard, training course catalog, search and filtering, course details popup, individual course pages, and the WordPress dashboard where I manage the courses.
