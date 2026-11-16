@@ -2,75 +2,84 @@
 
 ## Project Overview
 
-Aviation Hub is a WordPress-based aviation training directory I built to make it easier for visitors to explore courses, compare training options, and find information in one place.
+Aviation Hub is an aviation training website I built using WordPress, PHP, React, JavaScript, and CSS.
 
-The project uses WordPress and PHP to manage course information, with a custom React interface for browsing and filtering courses.
+I wanted to create a place where visitors could browse different aviation training courses, compare their details, and find what they're looking for without going through several pages.
+
+I used WordPress to manage the courses and built a React dashboard to display them. I also created a custom PHP plugin to connect everything together.
 
 ## WordPress Backend
 
-I developed a custom PHP plugin to manage the training courses through WordPress.
+I built a custom PHP plugin so I could add and manage training courses directly through WordPress.
 
-The plugin includes:
-- A custom post type for adding and editing training courses
+The plugin handles:
+
+- A custom post type (`training_course`) for adding and editing courses
 - Custom fields for course duration, difficulty level, and training format
-- Training categories and featured image support
-- REST API integration to make course information available to the frontend
+- Training categories and featured images
+- REST API data so the React dashboard can access course information
 - Individual course pages with featured images and Previous/Next navigation
 
-Course information can be updated through the WordPress dashboard without manually changing the React code.
+I wanted to be able to update courses from the WordPress dashboard without having to go back and change the React code every time.
 
 ## React Frontend
 
-I built the frontend using React, JavaScript, and CSS, with WordPress handling the course data.
+I built the dashboard using React, JavaScript, and CSS.
 
-The dashboard includes a navigation sidebar, rotating image slideshow, course overview statistics, and an interactive course catalog.
+It includes a navigation sidebar, rotating image slideshow, course statistics, and a catalog where visitors can browse training programs.
 
-I focused on making the interface easy to navigate, keeping course information organized, and creating a consistent layout across different screen sizes.
+I spent time adjusting the layout and navigation so the different sections worked well together. I also used CSS Grid, Flexbox, and media queries to make the dashboard work on smaller screens.
 
 ## Main Features
 
-- Course cards with images, descriptions, difficulty levels, and durations
-- Keyword search across course titles and descriptions
-- Category and difficulty-level filters
-- Course details popup showing duration, level, format, and description
+- Course cards showing images, descriptions, difficulty levels, and durations
+- Keyword search for course titles and descriptions
+- Filters for training categories and difficulty levels
+- Course details popup with additional information
 - Links to individual WordPress course pages
-- Automatic slideshow with manual navigation controls
-- Course statistics based on the information returned by WordPress
-- Loading messages, error handling, retry functionality, and empty search results
+- Automatic image slideshow with manual controls
+- Course statistics based on the courses stored in WordPress
+- Loading messages, error handling, retry functionality, and messages when no results are found
 - Responsive layouts for desktop, tablet, and mobile screens
 
 ## API Integration
 
-I connected the React dashboard to the WordPress REST API using JavaScript's Fetch API.
+I used the WordPress REST API to get course information from the backend and display it in React.
 
-The custom PHP plugin registers the training course content type and adds course details to the API response.
+The PHP plugin registers the training courses and adds their details to the API response. The dashboard then uses JavaScript's `fetch()` function to retrieve that information when the page loads.
 
-React retrieves this information when the page loads and uses it to populate the catalog, filters, and course details popup.
+The course data is available through the `/wp-json/wp/v2/training-courses` endpoint.
 
-This keeps the course content separate from the frontend, so new courses and updates can be managed directly in WordPress.
+This was an important part of the project because I wanted the course catalog to update based on what's stored in WordPress instead of having to manually add courses to the JavaScript.
 
 ## Testing
 
-I tested the main features of the portal, including:
+I tested the main parts of the website as I built them, including:
 
-- Retrieving course records and custom fields through the REST API
+- Checking that the REST API returned the correct course information and custom fields
 - Searching courses by title and description
-- Filtering by category and difficulty level
-- Opening and closing course details, including using the Escape key
-- Checking loading, error, retry, and empty-result states
-- Reviewing the layout at different screen sizes
-- Checking navigation links, featured images, and individual course pages
+- Testing the category and difficulty filters
+- Opening and closing the course details popup, including with the Escape key
+- Checking what happens when courses are loading, an API request fails, or a search returns no results
+- Adjusting the layout for different screen sizes
+- Checking course links, featured images, and Previous/Next navigation
+
+I also tested adding and editing courses through WordPress to make sure the changes appeared in the React dashboard.
 
 ## Technologies Used
 
-**Frontend:** React, JavaScript, HTML, CSS
+**Frontend:** React, JavaScript, HTML5, CSS3
 
 **Backend:** WordPress, PHP, WordPress REST API
 
-**Development Environment:** Local WordPress installation, Visual Studio Code
+**Development Tools:** LocalWP, Visual Studio Code
 
 ## Project Outcome
 
-The finished project is a working aviation training directory with four courses managed through WordPress. Visitors can browse training options, search and filter courses, view additional details, and open individual course pages.
+I finished the project with four aviation training courses managed through WordPress and displayed in the React dashboard.
 
-Building Aviation Hub gave me hands-on experience connecting a custom WordPress backend to an interactive React frontend while working on responsive design, content management, and usability.
+Visitors can browse the courses, search and filter the catalog, open a popup for more information, or visit an individual course page.
+
+Before this project, most of my WordPress experience involved updating existing websites. With Aviation Hub, I wanted to try building more of the functionality myself.
+
+I got more practice working with PHP, creating custom WordPress features, and using the REST API to connect WordPress with React. One of the more interesting parts was getting the frontend to display information directly from WordPress and making sure everything still worked when I added or changed courses.
